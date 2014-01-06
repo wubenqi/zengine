@@ -2,8 +2,11 @@
 # -*- encoding:utf8 -*-
 # protoc-gen-luabind
 #
-# Copyright 2010, www.lelewan.com
-# All rights reserved
+# Copyright (C) 2012 by wubenqi
+# Distributable under the terms of either the Apache License (Version 2.0) or 
+# the GNU Lesser General Public License, as specified in the COPYING file.
+#
+# By: wubenqi<wubenqi@gmail.com>
 #
 # Author: wubenqi<wubenqi@caitong.net>, 2012-08-03
 #
