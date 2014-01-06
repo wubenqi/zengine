@@ -1,0 +1,28 @@
+// Copyright (C) 2012 by wubenqi
+// Distributable under the terms of either the Apache License (Version 2.0) or 
+// the GNU Lesser General Public License, as specified in the COPYING file.
+//
+// By: wubenqi<wubenqi@gmail.com>
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+package hammer.common;
+option java_package = "hammer.common";
+
+enum ErrorCode {
+	kErrorCode_Ok						= 0;	// 操作成功
+	kErrorCode_ParseMessageError		= 1;	// 数据解析出错
+	kErrorCode_InvalidError				= 2;	// 未知错误
+	
+	kErrorCode_AuthOk					= 10;	// 验证通过
+	kErrorCode_NotPermission			= 11;	// 没有权限
+	
+    kErrorCode_BeenBanned				= 12;    // 被封号
+    kErrorCode_PasswordError			= 13;    // 密码错误
+    kErrorCode_HasLogin					= 14;    // 已经登录
+    kErrorCode_NonExistent				= 15;    // 不存在
+    kErrorCode_Existed					= 16;    // 已经存在
+    kErrorCode_Timeout					= 17;    // 超时
+}

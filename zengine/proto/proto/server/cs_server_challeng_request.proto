@@ -1,0 +1,20 @@
+// Copyright 2011, www.lelewan.com
+// All rights reserved
+//
+// Author: wubenqi<wubenqi@caitong.net>, 2011-05-10
+//
+
+// 客户登录认证交互协议数据包
+
+syntax = "proto2";
+
+option optimize_for = CODE_SIZE;
+
+package hammer.message;
+option java_package = "hammer.message";
+
+message CSServerChallengeRequest {
+  required string name = 1;
+  required string remote_password = 2;
+}
+

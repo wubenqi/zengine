@@ -1,0 +1,11 @@
+// Copyright (C) 2012 by wubenqi
+// Distributable under the terms of either the Apache License (Version 2.0) or 
+// the GNU Lesser General Public License, as specified in the COPYING file.
+//
+// By: wubenqi<wubenqi@gmail.com>
+//
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+package hammer.common;
+option java_package = "hammer.common";//import "const_common_define.proto";enum ETest {	kEnumTest_1			= 1;	kEnumTest_2			= 2;	kEnumTest_3			= 3;}message MTest {	required string name = 1;	required uint32 value= 2;}message MTestList {	required uint32 i_t  = 1;	required string s_t  = 2;	required bytes b_t  = 3;	required ETest e_t  = 4;	required MTest one = 5;		repeated uint32 i_all = 6;	repeated string s_all = 7;	repeated MTest m_all = 8;}

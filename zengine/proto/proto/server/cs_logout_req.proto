@@ -1,0 +1,18 @@
+// Copyright 2011, www.lelewan.com
+// All rights reserved
+//
+// Author: wubenqi<wubenqi@caitong.net>, 2012-03-13
+//
+
+syntax = "proto2";
+option optimize_for = CODE_SIZE;
+
+package hammer.message;
+option java_package = "hammer.message";
+
+// 登出
+message CSLogoutReq {
+  required uint32 player_id = 1; 		                  // 玩家ID
+  required uint32 type = 2; 			                      // 登出原因
+  // optional uint32 duplicate_login_player_id = 2; 			 // 重复登录的玩家ID
+}

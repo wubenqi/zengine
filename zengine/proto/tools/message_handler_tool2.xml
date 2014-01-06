@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="gb2312"?>
+<XMLIni>
+ <Section name="Running">
+  <Item name="running">LUABind</Item>
+ </Section>
+ 
+ <Section name="CC">
+  <Item name="g_message_handler_h_tpl">message_handler_h.tpl</Item>
+  <Item name="g_message_handler_cc_tpl">message_handler_cc.tpl</Item>
+  <Item name="g_message_handler_tools_cc_tpl">message_handler_tools_cc.tpl</Item>
+  <Item name="g_message_handler_tools_h_tpl">message_handler_tools_h.tpl</Item>
+  <Item name="g_register_message_factory_cc">..\main\register_message_factory.cc</Item>
+
+  <Item name="g_message_handler_h">..\message_handler2\message_handler.h</Item>
+  <Item name="g_message_handler_cc">..\message_handler2\message_handler.cc</Item>
+
+  <Item name="g_message_handler2">..\message_handler2</Item>
+ </Section>
+
+ <Section name="ActionScript3">
+  <Item name="message_type_as_tpl">message_type_as_tpl</Item>
+  <Item name="g_hammer_opcodes_h">hammer_opcodes.h</Item>
+  <Item name="g_message_type_as">MessageType.as</Item>
+ </Section>
+
+<Section name="LUA">
+  <Item name="g_message_handler_lua_tpl">message_handler_lua.tpl</Item>
+  <Item name="const_message_types_proto">..\..\tgame\proto\proto\common\const_message_types.proto</Item>
+  <Item name="g_server_proto">..\..\tgame\proto\proto\server</Item>
+  <Item name="g_message_handler2">..\scripts\message_handler2</Item>
+</Section>
+
+<Section name="LUABind">
+  <Item name="g_luabind_register_func_cc_tpl">luabind_register_func_cc.tpl</Item>
+  <Item name="g_proto_file_path">..\proto\common</Item>
+  <Item name="g_proto_file_path">..\proto\editor</Item>
+  <Item name="g_base_proto_file_path">..\proto</Item>
+  <Item name="g_luabind_register_helper_pb_cc">.\luabind_register_helper_pb.cc</Item>
+</Section>
+</XMLIni>

@@ -1,0 +1,22 @@
+// Copyright (C) 2012 by wubenqi
+// Distributable under the terms of either the Apache License (Version 2.0) or 
+// the GNU Lesser General Public License, as specified in the COPYING file.
+//
+// By: wubenqi<wubenqi@gmail.com>
+//
+// 客户登录认证交互协议数据包
+//
+
+syntax = "proto2";
+
+option optimize_for = CODE_SIZE;
+
+package hammer.message;
+option java_package = "hammer.message";
+
+message SCAuthProof {
+	required int32  ret_code = 1; 		// 返回状态
+	optional uint32 player_id = 2;		// 玩家ID
+}
+
+
