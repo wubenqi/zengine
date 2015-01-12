@@ -32,15 +32,15 @@ public:
   enum ZEngineContextType {
     kZEngineContextType_Invalid = 0,
     kZEngineContextType_Main = 1,
-    kZEngineContextType_IO = 2,
-    kZEngineContextType_ZEngine = 3
+    kZEngineContextType_IO = 1,
+    kZEngineContextType_ZEngine = 2
   };
   
   static const std::string kMainInstanceName;
   static const std::string kIOInstanceName;
 
 
-  ZEngineContext(ZEngineContextManager* context_manager, int context_type, base::PlatformThreadId instance_id, const std::string& instance_name, MessageLoop* message_loop)
+  ZEngineContext(ZEngineContextManager* context_manager, int context_type, base::PlatformThreadId instance_id, const std::string& instance_name, base::MessageLoop* message_loop)
     : context_type_(context_type)
     , instance_id_(instance_id)
     , instance_name_(instance_name)
@@ -129,7 +129,7 @@ public:
   //  return zengine_thread_;
   //}
 
-  MessageLoop* message_loop() {
+  base::MessageLoop* message_loop() {
     return message_loop_;
   }
 
@@ -151,7 +151,7 @@ private:
   //net::Reactor* io_thread_;
   //ZEngineDaemon* main_thread_;
   //ZEngineThread* zengine_thread_;
-  MessageLoop* message_loop_;
+  base::MessageLoop* message_loop_;
   ScriptManager* script_manager_;
 
   ZEngineContextManager* context_manager_;

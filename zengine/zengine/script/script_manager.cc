@@ -39,11 +39,11 @@ bool ScriptManager::Initialize() {
 }
 
 void ScriptManager::LoadScripts() {
-  base::linked_map<FilePath, ScriptFileManager::ScriptFileData>::iterator it;
-  base::linked_map<FilePath, ScriptFileManager::ScriptFileData>& script_datas = script_file_manager_->GetScriptDatas();
+  base::linked_map<base::FilePath, ScriptFileManager::ScriptFileData>::iterator it;
+  base::linked_map<base::FilePath, ScriptFileManager::ScriptFileData>& script_datas = script_file_manager_->GetScriptDatas();
   for (it=script_datas.begin(); it!=script_datas.end(); ++it) {
     if (it->second.IsModified()) {
-      script_engine_.Load(it->first.MaybeAsASCII());
+      script_engine_.DoFile(it->first.MaybeAsASCII());
     }
   }
 }
@@ -61,7 +61,7 @@ void ScriptManager::Destroy() {
 
 //////////////////////////////////////////////////////////////////////////
 int ScriptManager::ExeScript_MainInitialize() {
-  int result = script_engine_.CallFunction("MainInitialize");
+  int result = script_engine_.CallFunction<int>("MainInitialize");
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute MainInitialize() error, error_code = " << result;
   }
@@ -69,7 +69,7 @@ int ScriptManager::ExeScript_MainInitialize() {
 }
 
 int ScriptManager::ExeScript_MainDestroy() {
-  int result = script_engine_.CallFunction("MainDestroy");
+  int result = script_engine_.CallFunction<int>("MainDestroy");
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute MainDestroy() error, error_code = " << result;
   }
@@ -77,7 +77,7 @@ int ScriptManager::ExeScript_MainDestroy() {
 }
 
 int ScriptManager::ExeScript_OnThreadInitialize(ZEngineContext* context) {
-  int result = script_engine_.CallFunction("OnThreadInitialize", context);
+  int result = script_engine_.CallFunction<int, ZEngineContext*>("OnThreadInitialize", context);
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute OnThreadInitialize() error, error_code = " << result;
   }
@@ -85,7 +85,7 @@ int ScriptManager::ExeScript_OnThreadInitialize(ZEngineContext* context) {
 }
 
 int ScriptManager::ExeScript_OnThreadDestroy(ZEngineContext* context) {
-  int result = script_engine_.CallFunction("OnThreadDestroy", context);
+  int result = script_engine_.CallFunction<int, ZEngineContext*>("OnThreadDestroy", context);
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute OnThreadDestroy() error, error_code = " << result;
   }
@@ -119,7 +119,7 @@ int ScriptManager::ExeScript_OnThreadDestroy(ZEngineContext* context) {
 //}
 
 int ScriptManager::ExeScript_OnTaskDataReceived(ZEngineContext* context, const std::string& task_data) {
-  int result = script_engine_.CallFunction("OnTaskDataReceived", context, task_data);
+  int result = script_engine_.CallFunction<int, ZEngineContext*, std::string>("OnTaskDataReceived", context, task_data);
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute OnTaskDataReceived() error, error_code = " << result;
   }
@@ -127,7 +127,7 @@ int ScriptManager::ExeScript_OnTaskDataReceived(ZEngineContext* context, const s
 }
 
 int ScriptManager::ExeScript_OnTimer(ZEngineContext* context, uint32 timer_id, int tm) {
-  int result = script_engine_.CallFunction("OnTimer", context, timer_id, tm);
+  int result = script_engine_.CallFunction<int, ZEngineContext*, uint32, int>("OnTimer", context, timer_id, tm);
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute OnTimer() error, error_code = " << result;
   }

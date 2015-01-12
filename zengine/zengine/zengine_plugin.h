@@ -11,6 +11,10 @@
 
 #include <string>
 
+namespace base {
+class ConfigFile;
+}
+
 namespace zengine {
 
 class Plugin {
@@ -20,10 +24,16 @@ public:
 
   virtual const std::string& GetPluginName() const = 0;
 
-  virtual void Install() = 0;
+  virtual void Install(const base::ConfigFile* config_file) {
+    config_file_ = config_file;
+  }
+
   virtual void Initialize() = 0;
   virtual void Shutdown() = 0;
   virtual void Uninstall() = 0;
+
+protected:
+  const base::ConfigFile* config_file_;
 };
 
 class PluginFactory {

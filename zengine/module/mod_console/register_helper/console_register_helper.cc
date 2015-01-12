@@ -7,9 +7,10 @@
 
 #include "mod_console/register_helper/console_register_helper.h"
 
-#include "luabind/luabind.hpp"
-#include "luabind/out_value_policy.hpp"
-#include "luabind/raw_policy.hpp"
+// #include "luabind/luabind.hpp"
+// #include "luabind/out_value_policy.hpp"
+// #include "luabind/raw_policy.hpp"
+#include "scriptengine/luatinker/lua_tinker.h"
 
 #include "mod_console/module_console_dll.h"
 

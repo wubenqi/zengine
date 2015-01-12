@@ -11,11 +11,11 @@
 #include "base/file_util.h"
 #include "base/logging.h"
 #include "base2/exception.h"
+
 //#include "base2/dyn_lib_manager.h"
 
 #include "scriptengine/luabind_register_manager.h"
 #include "zengine/script/script_file_manager.h"
-#include "zengine/config_file.h"
 
 #ifdef ZENGINE_STATIC_LIB
 //#include "mod_db/module_db_plugin.h"
@@ -38,7 +38,7 @@ Root::Root()
   : is_initialized_(false)
   , context_(NULL) {
 
-  ConfigFile::GetInstance();
+  // base::ConfigFile::GetInstance();
   LuabindRegisterManager::GetInstance();
   ScriptFileManager::GetInstance();
   ZEngineContextManager::GetInstance();
@@ -52,7 +52,7 @@ Root::Root()
 
   ZEngineContextManager::GetInstance();
 
-  message_loop_ = MessageLoop::current();
+  message_loop_ = base::MessageLoop::current();
 }
 
 Root::~Root() {
@@ -60,16 +60,17 @@ Root::~Root() {
   UnloadModules();
 }
 
-void Root::Initialize(const ConfigFile* config) {
+void Root::Initialize(const base::ConfigFile* config) {
+  config_file_ = config;
 #ifdef ZENGINE_STATIC_LIB
   PluginDllManager::GetInstance()->Initialize();
 #endif
 
   // ¼ÓÔØ²å¼þÄ£¿é
-  zengine::StringVector values = config->GetStringList("Modules", "file_path");
+  base::StringVector values = config->GetStringList("Modules", "file_path");
   LoadModules(values.string_vector);
 
-  context_ = ZEngineContextManager::GetInstance()->CreateContext(ZEngineContext::kZEngineContextType_Main, base::PlatformThread::CurrentId(), ZEngineContext::kMainInstanceName, MessageLoop::current());
+  context_ = ZEngineContextManager::GetInstance()->CreateContext(ZEngineContext::kZEngineContextType_Main, base::PlatformThread::CurrentId(), ZEngineContext::kMainInstanceName, base::MessageLoop::current());
   
   is_initialized_ = true;
 }
@@ -91,7 +92,7 @@ bool Root::CreateZEngineThread(const std::string& instance_name) {
     return false;
   }
 
-  base::SharedPtr<ZEngineThread> zthread(new ZEngineThread(instance_name));
+  shared_ptr<ZEngineThread> zthread(new ZEngineThread(instance_name));
   zthread->Start();
   zengine_threads_.insert(std::make_pair(instance_name, zthread));
 
@@ -100,7 +101,7 @@ bool Root::CreateZEngineThread(const std::string& instance_name) {
 
 void Root::Run() {
   OnCreate();
-  MessageLoop::current()->Run();
+  base::MessageLoop::current()->Run();
   OnDestroy();
 }
 
@@ -235,7 +236,7 @@ void Root::UnloadModule(const std::string& module_name) {
 void Root::InstallModule(Plugin* module) {
   LOG(INFO) << "void Root::InstallModule - Installing plugin: " << module->GetPluginName();
   modules_.push_back(module);
-  module->Install();
+  module->Install(config_file_);
   if (is_initialized_) {
     module->Initialize();
   }

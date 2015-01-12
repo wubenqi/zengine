@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XMLIni>
+ <!--全局配置信息-->
+ <Section name="System">
+ </Section>
+
+ <Section name="Scripts">
+  <Item name="file_path">../scripts2/util</Item>
+  <Item name="file_path">../scripts2/zengine/main.lua</Item>
+  <Item name="file_path">../scripts2/zengine/thread.lua</Item>
+  <Item name="file_path">../scripts2/zengine/znet_handler_engine.lua</Item>
+  <Item name="file_path">../scripts2/zengine/echo_client/echo_client.lua</Item>
+  <Item name="file_path">../scripts2/zengine/echo_client/echo_client_handler_engine.lua</Item>
+ </Section>
+
+ <Section name="Modules">
+  <Item name="file_path">mod_net</Item>
+ </Section>
+  
+ <!--网络模块-->
+ <Section name="mod_net">
+  <Item name="instance_name">echo_client</Item>
+ </Section>
+ <Section name="echo_client">
+  <Item name="net_type">TCPConnector</Item> <!--net_type：TCPConnector或TCPAcceptor--->
+  <Item name="addr_info">127.0.0.1:9901</Item> <!--可以有多个-->
+ </Section>
+</XMLIni>

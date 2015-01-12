@@ -12,8 +12,9 @@
 #include <vector>
 #include "base/memory/ref_counted.h"
 #include "base/memory/scoped_ptr.h"
-#include "base/hash_tables.h"
+#include "base/containers/hash_tables.h"
 
+#include "base2/config_file.h"
 #include "base2/daemon/base_daemon.h"
 
 //#include "net/base/io_buffer.h"
@@ -54,7 +55,7 @@ public:
 
 protected:
   // ю╢вт base::BaseDaemon
-  virtual int LoadConfig( const FilePath& xml_ini_file );
+  virtual int LoadConfig( const base::FilePath& xml_ini_file );
   virtual int	Initialize( int argc, char** argv );
   virtual int Destroy();
   virtual int Run();
@@ -78,6 +79,8 @@ private:
   //ZEngineThreadMap zengine_threads_;
   //ZEngineContext* context_;
   //ZEngineContextManager* context_manager_;
+
+  base::ConfigFile config_file_;
 };
 
 

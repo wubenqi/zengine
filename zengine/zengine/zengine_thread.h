@@ -11,6 +11,7 @@
 
 #include "base/memory/scoped_ptr.h"
 #include "base/threading/thread.h"
+#include "base2/shared_ptr.h"
 
 #include "net/base/io_buffer.h"
 #include "zengine/script/script_manager.h"
@@ -22,7 +23,7 @@ public:
   ZEngineThread(const std::string& thread_name);
   virtual ~ZEngineThread();
 
-  void OnTaskDataReceived(net::IOBufferPtr task_data);
+  void OnTaskDataReceived(shared_ptr<net::IOBuffer> task_data);
 
 protected:
   // ´Óbase::Thread¼Ì³Ð

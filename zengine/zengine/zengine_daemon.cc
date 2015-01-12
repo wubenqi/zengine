@@ -14,15 +14,14 @@
 #include "base/file_util.h"
 #include "base2/arg.h"
 
+//#include "zengine/client_comm_handler.h"
+
 //#include "message/m"
 #if defined(OS_WIN)
 #include "net/base/winsock_init.h"
 #endif
-#include "net/engine/reactor.h"
-#include "net/engine/net_engine_manager.h"
 
-//#include "zengine/client_comm_handler.h"
-#include "zengine/config_file.h"
+#include "net/message_loop/message_loop_for_io2.h"
 
 
 #include "zengine/zengine_root.h"
@@ -47,32 +46,33 @@ ZEngineDaemon::ZEngineDaemon()
   //net_engine_manager_ = NULL;
   //script_manager_ = NULL;
 
+    message_loop_ = new base::MessageLoop(scoped_ptr<base::MessagePump>(new base::MessagePumpLibevent2()));
   zengine::Root::GetInstance();
 }
 
 ZEngineDaemon::~ZEngineDaemon() {
 }
 
-int ZEngineDaemon::LoadConfig( const FilePath& xml_ini_file ) {
-  ConfigFile* config_file = ConfigFile::GetInstance();
-  return config_file->Initialize(xml_ini_file);
+int ZEngineDaemon::LoadConfig( const base::FilePath& xml_ini_file ) {
+  // ConfigFile* config_file = ConfigFile::GetInstance();
+  return config_file_.Initialize(file_path_util::ToStringHack(xml_ini_file).c_str()) ? 0 : -1;
 }
 
 int	ZEngineDaemon::Initialize( int argc, char** argv ) {  
   // ½Å±¾³õÊ¼»¯
-  ConfigFile* config_file = ConfigFile::GetInstance();
-  zengine::StringVector values = config_file->GetStringList("Scripts", "file_path");
+  //ConfigFile* config_file = ConfigFile::GetInstance();
+  base::StringVector values = config_file_.GetStringList("Scripts", "file_path");
 
-  std::vector<FilePath> script_file_paths;
+  std::vector<base::FilePath> script_file_paths;
   for (size_t i=0; i<values.size(); ++i) {
-    script_file_paths.push_back(FilePath::FromUTF8Unsafe(values.string_vector[i]));
+    script_file_paths.push_back(base::FilePath::FromUTF8Unsafe(values.string_vector[i]));
   }
   ScriptFileManager::GetInstance()->Initialize(script_file_paths);
   
   zengine::Base_Register_Helper();
   zengine::ZEngine_Register_Helper();
 
-  zengine::Root::GetInstance()->Initialize(config_file);
+  zengine::Root::GetInstance()->Initialize(&config_file_);
 
   //context_manager_ = ZEngineContextManager::GetInstance();
   //// DCHECK(context_manager_);
@@ -265,6 +265,10 @@ void ZEngineDaemon::OnNetEngineDestroy(net::Reactor* reactor) {
 
 int main(int argc, char* argv[]) {
   base::AtExitManager at_exit_manager;
+
+#if defined(OS_WIN)
+  net::EnsureWinsockInit();
+#endif
 
   ZEngineDaemon daemon;
   return daemon.DoMain(argc, argv);

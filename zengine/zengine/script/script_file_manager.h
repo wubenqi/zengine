@@ -13,11 +13,11 @@
 
 #include "base/memory/singleton.h"
 
-#include "base/file_path.h"
-#include "base/time.h"
+#include "base/files/file_path.h"
+#include "base/time/time.h"
 #include "base2/linked_map.h"
 
-#include "zengine/zengine_types.h"
+//#include "zengine/zengine_types.h"
 
 class ScriptManager;
 class ScriptFileManager {
@@ -43,7 +43,7 @@ public:
     base::Time new_last_modified_time;   // 文件最后修改时间
   };
 
-  std::vector<FilePath>& GetWatcherFilePaths() {
+  std::vector<base::FilePath>& GetWatcherFilePaths() {
     return watcher_file_paths_;
   }
 
@@ -53,7 +53,7 @@ public:
     script_managers_.push_back(script_manager);
   }
 
-  void Initialize(const std::vector<FilePath>& file_paths);
+  void Initialize(const std::vector<base::FilePath>& file_paths);
   void Destroy();
 
   // 开始监控
@@ -62,7 +62,7 @@ public:
   //// 需要重新加载的脚本
   //void OnWatchSignalThreadSafe();
 
-  base::linked_map<FilePath, ScriptFileData>& GetScriptDatas() {
+  base::linked_map<base::FilePath, ScriptFileData>& GetScriptDatas() {
     return script_datas_;
   }
 
@@ -78,10 +78,10 @@ private:
     Destroy();
   }
 
-  std::vector<FilePath> watcher_file_paths_;
-  base::linked_map<FilePath, ScriptFileData> script_datas_;
+  std::vector<base::FilePath> watcher_file_paths_;
+  base::linked_map<base::FilePath, ScriptFileData> script_datas_;
 
-  std::vector<ScriptManager* >script_managers_;
+  std::vector<ScriptManager*> script_managers_;
 };
 
 #endif

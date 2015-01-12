@@ -1,45 +1,14 @@
--- Copyright 2010, www.lelewan.com
--- All rights reserved
+-- Copyright (C) 2012 by wubenqi
+-- Distributable under the terms of either the Apache License (Version 2.0) or 
+-- the GNU Lesser General Public License, as specified in the COPYING file.
+--
+-- By: wubenqi<wubenqi@gmail.com>
 --
 
 ------------------------------------------------------------------------------------------
 -- 主程序初始化
 function MainInitialize()
-  LOG("MainInitialize")
-  
-  --zengine:CreateZEngineThread("instance")
-  --zengine:Initialize_NetEngineManager()
-  --CreateTCPConnector("127.0.0.1", "9900", 10)
-  --CreateZEngineThread("instance")
---[[  
-  local sections = ConfigFile.GetInstance():GetSectionName()
-  LOG(sections:size())
-  for section in sections.string_vector do
-    --print(name)
-    LOG(section)
-  end
---]]
---[[  
-  local db_conn_pool = GetDBConnPoolMgr()
-  local db_conn = db_conn_pool:GetFreeConnection()
-  local answ = db_conn:Query("SELECT *	FROM t_player")
-  if answ ~= nil then
-    repeat
-      LOG(UTF8ToNativeMB(answ:GetColumn(1)))
-    until answ:FetchRow() == false  
-  end
-  db_conn_pool:SetFreeConnection(db_conn)
---]]
-
-  local cs_create_room = CSCreateRoom();
-  cs_create_room.app = "111"
-  cs_create_room.creator_uuid = 1
-  cs_create_room.creator_name = "222"
-  cs_create_room.room_type = 2
-  cs_create_room.room_name = "333"
-  
-  LOG(cs_create_room:Utf8DebugString())
-  
+  LOG("MainInitialize")  
   return 0
 end
 
@@ -96,6 +65,5 @@ end
 -- 网络连接关闭
 function OnConnectionClosed(ih)
   LOG("OnConnectionClosed")  
-  -- AsyncSendIOBuffer(MessageToIOBuffer(hammer::message::MESSAGE_CS_SERVER_CHALLENGE_REQUEST, &cs_server_challenge_request));
   return 0
 end

@@ -12,9 +12,9 @@
 #include <vector>
 
 #include "base/memory/singleton.h"
-#include "base/file_path.h"
-
+#include "base/files/file_path.h"
 #include "base2/shared_ptr.h"
+#include "base2/config_file.h"
 
 #ifndef ZENGINE_STATIC_LIB
 #include "base2/dyn_lib.h"
@@ -23,10 +23,14 @@
 
 #include "zengine/zengine_plugin.h"
 
+namespace base {
+class ConfigFile;
+class MessageLoop;
+}
+
 class ConfigFile;
 class ZEngineThread;
 class ZEngineContext;
-class MessageLoop;
 namespace zengine {
 
 class Root {
@@ -43,7 +47,7 @@ public:
     return Singleton<Root>::get();
   }
 
-  void Initialize(const ConfigFile* config);
+  void Initialize(const base::ConfigFile* config);
   void Shutdown();
 
   /** Returns whether the system is initialised or not. */
@@ -81,14 +85,16 @@ private:
   ModuleInstanceList modules_;
   bool is_initialized_;
 
-  typedef base::hash_map<std::string, base::SharedPtr<ZEngineThread> > ZEngineThreadMap;
+  typedef base::hash_map<std::string, shared_ptr<ZEngineThread> > ZEngineThreadMap;
   ZEngineThreadMap zengine_threads_;
   ZEngineContext* context_;
 
-  MessageLoop* message_loop_;
+  base::MessageLoop* message_loop_;
   //ZEngineContextManager* context_manager_;
 
   DISALLOW_COPY_AND_ASSIGN(Root);
+
+  const base::ConfigFile* config_file_;
 };
 
 

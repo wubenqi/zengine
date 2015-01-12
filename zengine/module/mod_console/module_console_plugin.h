@@ -23,7 +23,7 @@ class ModuleConsolePlugin : public Plugin, public ConsoleListener {
 public:
   ModuleConsolePlugin(BaseConsole* console)
     : ConsoleListener(console)
-    , ALLOW_THIS_IN_INITIALIZER_LIST(console_thread_(this))
+    , console_thread_(this)
     , listen_instance_name_("main") {
   }
   virtual ~ModuleConsolePlugin() {}
@@ -32,7 +32,7 @@ public:
 
   //////////////////////////////////////////////////////////////////////////
   virtual const std::string& GetPluginName() const;
-  virtual void Install();
+  virtual void Install(const base::ConfigFile* config_file);
   virtual void Initialize();
   virtual void Shutdown();
   virtual void Uninstall();

@@ -7,9 +7,7 @@
 
 #include "mod_console/module_console_plugin.h"
 
-#include "db/database.h"
-
-#include "zengine/config_file.h"
+#include "base2/config_file.h"
 #include "zengine/zengine_context.h"
 #include "zengine/zengine_context_manager.h"
 #include "mod_console/register_helper/console_register_helper.h"
@@ -28,13 +26,14 @@ const std::string& ModuleConsolePlugin::GetPluginName() const {
   return kConsoleModuleName;
 }
 
-void ModuleConsolePlugin::Install() {
+void ModuleConsolePlugin::Install(const base::ConfigFile* config_file) {
+  Plugin::Install(config_file);
 }
 
 void ModuleConsolePlugin::Initialize() {
-  ConfigFile* config = ConfigFile::GetInstance();
+  // ConfigFile* config = ConfigFile::GetInstance();
 
-  const char* listen_instance_name = config->GetString(kConsoleModuleName.c_str(), "listen_instance_name");
+  const char* listen_instance_name = config_file_->GetString(kConsoleModuleName.c_str(), "listen_instance_name");
   if (listen_instance_name) {
     listen_instance_name_ = listen_instance_name;
     listen_context_ = ZEngineContextManager::GetInstance()->LookupContext(listen_instance_name_);

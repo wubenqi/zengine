@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../;../module;../../engine;../proto/cc/common;../proto/cc/editor;../proto/cc/server"
+				AdditionalIncludeDirectories="../;../module;../../../zutils/zutils;../proto/cc/common;../proto/cc/editor;../proto/cc/server"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;_WIN32_WINNT=0x0600;WIN32_LEAN_AND_MEAN;NOMINMAX;ZENGINE_STATIC_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -171,22 +171,6 @@
 			Name="zengine"
 			>
 			<File
-				RelativePath=".\config_file.cc"
-				>
-			</File>
-			<File
-				RelativePath=".\config_file.h"
-				>
-			</File>
-			<File
-				RelativePath=".\config_file_xml_handler.cc"
-				>
-			</File>
-			<File
-				RelativePath=".\config_file_xml_handler.h"
-				>
-			</File>
-			<File
 				RelativePath=".\zengine_context.cc"
 				>
 			</File>
@@ -242,10 +226,6 @@
 				RelativePath=".\zengine_thread.h"
 				>
 			</File>
-			<File
-				RelativePath=".\zengine_types.h"
-				>
-			</File>
 			<Filter
 				Name="script"
 				>
@@ -293,294 +273,58 @@
 					Name="mod_net"
 					>
 					<File
-						RelativePath="..\module\mod_net\znet_comm_handler.cc"
+						RelativePath="..\module\mod_net\comm_node_info.cc"
 						>
 					</File>
 					<File
-						RelativePath="..\module\mod_net\znet_comm_handler.h"
+						RelativePath="..\module\mod_net\comm_node_info.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\module_net_dll.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\module_net_dll.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\module_net_plugin.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\module_net_plugin.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\znet_handler_context.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\znet_tcp_client.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\znet_tcp_client.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\znet_tcp_server.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_net\znet_tcp_server.h"
 						>
 					</File>
 					<Filter
 						Name="register_helper"
 						>
+						<File
+							RelativePath="..\module\mod_net\register_helper\net_register_helper.cc"
+							>
+						</File>
 						<File
 							RelativePath="..\module\mod_net\register_helper\net_register_helper.h"
-							>
-						</File>
-					</Filter>
-				</Filter>
-				<Filter
-					Name="mod_protobuf"
-					>
-					<File
-						RelativePath="..\..\lib\libprotobuf.lib"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_protobuf\module_protobuf_dll.cc"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_protobuf\module_protobuf_dll.h"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_protobuf\module_protobuf_plugin.cc"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_protobuf\module_protobuf_plugin.h"
-						>
-					</File>
-					<Filter
-						Name="register_helper"
-						>
-						<File
-							RelativePath="..\module\mod_protobuf\register_helper\protobuf_register_helper.cc"
-							>
-						</File>
-						<File
-							RelativePath="..\module\mod_protobuf\register_helper\protobuf_register_helper.h"
-							>
-						</File>
-					</Filter>
-					<Filter
-						Name="proto"
-						>
-						<Filter
-							Name="cc"
-							>
-							<Filter
-								Name="common"
-								>
-								<File
-									RelativePath="..\proto\cc\common\const_message_types.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\common\const_message_types.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\common\error_code.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\common\error_code.pb.h"
-									>
-								</File>
-							</Filter>
-							<Filter
-								Name="server"
-								>
-								<File
-									RelativePath="..\proto\cc\server\cs_auth_challenge.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\cs_auth_challenge.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\cs_auth_proof.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\cs_auth_proof.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\cs_logout_req.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\cs_logout_req.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\cs_server_challeng_request.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\cs_server_challeng_request.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\message_null.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\message_null.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_auth_challenge.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_auth_challenge.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_auth_proof.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_auth_proof.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_ret_req_result.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_ret_req_result.pb.h"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_server_challeng_ack.pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\cc\server\sc_server_challeng_ack.pb.h"
-									>
-								</File>
-							</Filter>
-						</Filter>
-						<Filter
-							Name="luabind"
-							>
-							<Filter
-								Name="common"
-								>
-								<File
-									RelativePath="..\proto\luabind\common\const_message_types.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\common\error_code.luabind_pb.cc"
-									>
-								</File>
-							</Filter>
-							<Filter
-								Name="server"
-								>
-								<File
-									RelativePath="..\proto\luabind\server\cs_auth_challenge.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\cs_auth_proof.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\cs_logout_req.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\cs_server_challeng_request.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\luabind_register_helper_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\message_null.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\sc_auth_challenge.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\sc_auth_proof.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\sc_ret_req_result.luabind_pb.cc"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\luabind\server\sc_server_challeng_ack.luabind_pb.cc"
-									>
-								</File>
-							</Filter>
-						</Filter>
-						<Filter
-							Name="proto"
-							>
-							<Filter
-								Name="common"
-								>
-								<File
-									RelativePath="..\proto\proto\common\const_message_types.proto"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\proto\common\error_code.proto"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\proto\common\luabind_pb_test.proto"
-									>
-								</File>
-							</Filter>
-							<Filter
-								Name="server"
-								>
-								<File
-									RelativePath="..\proto\proto\server\cs_auth_challenge.proto"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\proto\server\cs_auth_proof.proto"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\proto\server\message_null.proto"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\proto\server\sc_auth_proof.proto"
-									>
-								</File>
-								<File
-									RelativePath="..\proto\proto\server\sc_server_challeng_ack.proto"
-									>
-								</File>
-							</Filter>
-						</Filter>
-					</Filter>
-				</Filter>
-				<Filter
-					Name="mod_net2"
-					>
-					<File
-						RelativePath="..\module\mod_net2\module_net2_dll.cc"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_net2\module_net2_dll.h"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_net2\module_net2_plugin.cc"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_net2\module_net2_plugin.h"
-						>
-					</File>
-					<Filter
-						Name="register_helper"
-						>
-						<File
-							RelativePath="..\module\mod_net2\register_helper\net2_register_helper.cc"
-							>
-						</File>
-						<File
-							RelativePath="..\module\mod_net2\register_helper\net2_register_helper.h"
 							>
 						</File>
 					</Filter>
@@ -637,38 +381,6 @@
 						</File>
 					</Filter>
 				</Filter>
-				<Filter
-					Name="mod_db"
-					>
-					<File
-						RelativePath="..\module\mod_db\module_db_dll.cc"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_db\module_db_dll.h"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_db\module_db_plugin.cc"
-						>
-					</File>
-					<File
-						RelativePath="..\module\mod_db\module_db_plugin.h"
-						>
-					</File>
-					<Filter
-						Name="register_helper"
-						>
-						<File
-							RelativePath="..\module\mod_db\register_helper\db_register_helper.cc"
-							>
-						</File>
-						<File
-							RelativePath="..\module\mod_db\register_helper\db_register_helper.h"
-							>
-						</File>
-					</Filter>
-				</Filter>
 			</Filter>
 		</Filter>
 		<Filter
@@ -710,134 +422,30 @@
 					>
 				</File>
 				<Filter
-					Name="zcached"
+					Name="echo_client"
 					>
 					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcached\zcache_data_mgr.lua"
+						RelativePath="..\..\bin\scripts2\zengine\echo_client\echo_client.lua"
 						>
 					</File>
 					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcached\zcache_db_mgr.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcached\zcache_proto.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcached\zcache_session_engine.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcached\zcached.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\debug\zcached.xml"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcached\zlogin_session_handler.lua"
+						RelativePath="..\..\bin\scripts2\zengine\echo_client\echo_client_handler_engine.lua"
 						>
 					</File>
 				</Filter>
 				<Filter
-					Name="zcache_client"
+					Name="echod"
 					>
 					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcache_client\zcache_client.lua"
+						RelativePath="..\..\bin\scripts2\zengine\echod\echod.lua"
 						>
 					</File>
 					<File
-						RelativePath="..\..\bin\debug\zcache_client.xml"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zcache_client\zclient_session_engine.lua"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="zgamed"
-					>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zgamed\message_zgate_util.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zgamed\zcache_session_handler.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zgamed\zgame_session_engine.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zgamed\zgamed.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\debug\zgamed.xml"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zgamed\zgate_session_handler.lua"
-						>
-					</File>
-				</Filter>
-				<Filter
-					Name="zlogind"
-					>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zlogind\zcache_session_handler.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zlogind\zgate_session_handler.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zlogind\zlogin_session_engine.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\scripts2\zengine\zlogind\zlogind.lua"
-						>
-					</File>
-					<File
-						RelativePath="..\..\bin\debug\zlogind.xml"
+						RelativePath="..\..\bin\scripts2\zengine\echod\echod_handler_engine.lua"
 						>
 					</File>
 				</Filter>
 			</Filter>
-		</Filter>
-		<Filter
-			Name="zcommon"
-			>
-			<File
-				RelativePath="..\zcommon\config_util.cc"
-				>
-			</File>
-			<File
-				RelativePath="..\zcommon\config_util.h"
-				>
-			</File>
-			<File
-				RelativePath="..\zcommon\io_handler_util.cc"
-				>
-			</File>
-			<File
-				RelativePath="..\zcommon\io_handler_util.h"
-				>
-			</File>
-			<File
-				RelativePath="..\zcommon\message_util.cc"
-				>
-			</File>
-			<File
-				RelativePath="..\zcommon\message_util.h"
-				>
-			</File>
 		</Filter>
 	</Files>
 	<Globals>

@@ -7,9 +7,9 @@
 
 #include "zengine/zengine_plugin_dll_manager.h"
 
-#include "mod_net2/module_net2_dll.h"
+#include "mod_net/module_net_dll.h"
 //#include "mod_db/module_db_dll.h"
-#include "mod_protobuf/module_protobuf_dll.h"
+//#include "mod_protobuf/module_protobuf_dll.h"
 //#include "mod_http_client/module_http_client_dll.h"
 //#include "mod_ctemplate/module_ctemplate_dll.h"
 //#include "mod_html/module_html_dll.h"
@@ -20,9 +20,9 @@
 namespace zengine {
 
 void PluginDllManager::Initialize() {
-  dll_funcs_.push_back(MakeTuple(ModuleName_Net2(), &DllStartModule_Net2, &DllStopModule_Net2));
+  dll_funcs_.push_back(MakeTuple(ModuleName_Net(), &DllStartModule_Net, &DllStopModule_Net));
   //dll_funcs_.push_back(MakeTuple(ModuleName_DB(), &DllStartModule_DB, &DllStopModule_DB));
-  dll_funcs_.push_back(MakeTuple(ModuleName_Protobuf(), &DllStartModule_Protobuf, &DllStopModule_Protobuf));
+  //dll_funcs_.push_back(MakeTuple(ModuleName_Protobuf(), &DllStartModule_Protobuf, &DllStopModule_Protobuf));
   //dll_funcs_.push_back(MakeTuple(ModuleName_HttpClient(), &DllStartModule_HttpClient, &DllStopModule_HttpClient));
 
   //dll_funcs_.push_back(MakeTuple(ModuleName_CTemplate(), &DllStartModule_CTemplate, &DllStopModule_CTemplate));

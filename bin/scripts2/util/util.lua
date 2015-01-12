@@ -44,16 +44,6 @@ string.split = function(s, p)
   return rt
 end
 
-------------------------------------------------------------------------------------------------------------
-function GetDBTableMaxVal(table_name, col_name)
-  local max_val = nil
-  local answ = CdbManager.Query(string.format("SELECT MAX(%s) AS val FROM %s", col_name, table_name))
-  if answ ~= nil then
-    max_val = answ:GetColumnInt(0)+1
-  end
-  return max_val
-end
-
 --local kHashKey = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 --const static int kSessionKeyLen = 32;
 --生成一个64字节的键

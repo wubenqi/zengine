@@ -64,7 +64,7 @@ int ZNetCommHandler::OnNewConnection() {
   context_ = reinterpret_cast<ZEngineContext*>(GetReactor()->GetUserData());
   DCHECK(context_);
   DCHECK(context_->script_manager());
-  int result = context_->script_manager()->script_engine().CallFunction("OnNewConnection", this);
+  int result = context_->script_manager()->script_engine().CallFunction<int, ZNetCommHandler*>("OnNewConnection", this);
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute OnNewConnection() error, error_code = " << result;
   }
@@ -92,7 +92,7 @@ int ZNetCommHandler::OnDataReceived(const PacketPtr& packet) {
   //    LOG(ERROR) << "ERROR: In main.lua, Execute OnDataReceived() error, error_code = " << result;
   //  }
   //
-  int result = context_->script_manager()->script_engine().CallFunction("OnDataReceived", this, message_type, io_buffer);
+  int result = context_->script_manager()->script_engine().CallFunction<int, ZNetCommHandler*, uint16, IOBuffer2*>("OnDataReceived", this, message_type, &io_buffer);
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute OnDataReceived() error, error_code = " << result;
   }
@@ -104,7 +104,7 @@ int ZNetCommHandler::OnConnectionClosed() {
   DCHECK(context_);
   DCHECK(context_->script_manager());
 
-  int result = context_->script_manager()->script_engine().CallFunction("OnConnectionClosed", this);
+  int result = context_->script_manager()->script_engine().CallFunction<int, ZNetCommHandler*>("OnConnectionClosed", this);
   if (result!=0) {
     LOG(ERROR) << "ERROR: In main.lua, Execute OnConnectionClosed() error, error_code = " << result;
   }

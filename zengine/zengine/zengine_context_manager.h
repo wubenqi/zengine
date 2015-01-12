@@ -15,10 +15,10 @@
 #include "base/memory/singleton.h"
 
 //class ZEngineDaemon;
-//namespace net {
-//class Reactor;
-//}
+namespace base {
 class MessageLoop;
+}
+
 class ZEngineContext;
 //class ZEngineThread;
 class ZEngineContextManager {
@@ -27,7 +27,7 @@ public:
     return Singleton<ZEngineContextManager>::get();
   }
 
-  ZEngineContext* CreateContext(int context_type, base::PlatformThreadId instance_id, const std::string& instance_name, MessageLoop* message_loop);
+  ZEngineContext* CreateContext(int context_type, base::PlatformThreadId instance_id, const std::string& instance_name, base::MessageLoop* message_loop);
   //ZEngineContext* CreateContext(base::PlatformThreadId instance_id, const std::string& instance_name, ZEngineDaemon* daemon);
   //ZEngineContext* CreateContext(base::PlatformThreadId instance_id, const std::string& instance_name, ZEngineThread* zthread);
 

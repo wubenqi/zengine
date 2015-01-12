@@ -9,6 +9,9 @@
 #define ZENGINE_SCRIPT_SCRIPT_MANAGER_H_
 #pragma once
 
+#include <vector>
+#include <string>
+#include "base/basictypes.h"
 #include "scriptengine/script_engine.h"
 
 //class ZNetCommHandler;
@@ -21,6 +24,10 @@ public:
 
   bool Initialize();
   void Destroy();
+
+  ScriptEngine* GetScriptEngine() {
+    return &script_engine_;
+  }
 
   ScriptEngine& script_engine() {
     return script_engine_;

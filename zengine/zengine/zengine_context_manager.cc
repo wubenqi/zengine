@@ -9,7 +9,7 @@
 
 #include "zengine/zengine_context.h"
 
-ZEngineContext* ZEngineContextManager::CreateContext(int context_type, base::PlatformThreadId instance_id, const std::string& instance_name, MessageLoop* message_loop) {
+ZEngineContext* ZEngineContextManager::CreateContext(int context_type, base::PlatformThreadId instance_id, const std::string& instance_name, base::MessageLoop* message_loop) {
   ZEngineContext* context = new ZEngineContext(this, context_type, instance_id, instance_name, message_loop);
   context->Initialize();
   AddContext(context);
