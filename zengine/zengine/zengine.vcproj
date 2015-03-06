@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../;../module;../../../zutils/zutils;../proto/cc/common;../proto/cc/editor;../proto/cc/server"
+				AdditionalIncludeDirectories="../;../module;../../../zutils/zutils;../proto/cc/common;../proto/cc/editor;../proto/cc/server;../third_party"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;_WIN32_WINNT=0x0600;WIN32_LEAN_AND_MEAN;NOMINMAX;ZENGINE_STATIC_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,6 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="libeay32.lib"
 				OutputFile="../../bin/debug/$(ProjectName).exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
@@ -381,6 +382,90 @@
 						</File>
 					</Filter>
 				</Filter>
+				<Filter
+					Name="mod_db"
+					>
+					<File
+						RelativePath="..\module\mod_db\module_db_dll.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_db\module_db_dll.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_db\module_db_plugin.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_db\module_db_plugin.h"
+						>
+					</File>
+					<Filter
+						Name="register_helper"
+						>
+						<File
+							RelativePath="..\module\mod_db\register_helper\db_register_helper.cc"
+							>
+						</File>
+						<File
+							RelativePath="..\module\mod_db\register_helper\db_register_helper.h"
+							>
+						</File>
+					</Filter>
+				</Filter>
+				<Filter
+					Name="mod_xml"
+					>
+					<File
+						RelativePath="..\module\mod_xml\module_xml_dll.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_xml\module_xml_dll.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_xml\module_xml_plugin.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_xml\module_xml_plugin.h"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_xml\zxml_wrapper.cc"
+						>
+					</File>
+					<File
+						RelativePath="..\module\mod_xml\zxml_wrapper.h"
+						>
+					</File>
+					<Filter
+						Name="register_helper"
+						>
+						<File
+							RelativePath="..\module\mod_xml\register_helper\xml_register_helper.cc"
+							>
+						</File>
+						<File
+							RelativePath="..\module\mod_xml\register_helper\xml_register_helper.h"
+							>
+						</File>
+					</Filter>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="base"
+				>
+				<File
+					RelativePath="..\base\rsa_help.cc"
+					>
+				</File>
+				<File
+					RelativePath="..\base\rsa_help.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -402,6 +487,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\bin\scripts2\util\url_codec.lua"
+					>
+				</File>
+				<File
 					RelativePath="..\..\bin\scripts2\util\util.lua"
 					>
 				</File>
@@ -415,6 +504,10 @@
 				</File>
 				<File
 					RelativePath="..\..\bin\scripts2\zengine\thread.lua"
+					>
+				</File>
+				<File
+					RelativePath="..\..\bin\scripts2\zengine\xml.lua"
 					>
 				</File>
 				<File
@@ -442,6 +535,18 @@
 					</File>
 					<File
 						RelativePath="..\..\bin\scripts2\zengine\echod\echod_handler_engine.lua"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="cloud_video"
+					>
+					<File
+						RelativePath="..\..\bin\scripts2\zengine\cloud_video\cloud_video.lua"
+						>
+					</File>
+					<File
+						RelativePath="..\..\bin\scripts2\zengine\cloud_video\message.lua"
 						>
 					</File>
 				</Filter>

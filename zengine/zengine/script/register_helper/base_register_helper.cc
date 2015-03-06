@@ -11,12 +11,13 @@
 
 #include "base/md5.h"
 #include "base2/utf8_util.h"
+#include "base/rsa_help.h"
 
 namespace {
 
 static const std::string kBaseModuleName("mod_base");
 
-std::string UTF8ToNativeMB(const std::string& utf8) {
+std::string UTF8ToNativeMB(const char* utf8) {
 #if defined(OS_WIN)
   return base::UTF8ToNativeMB(utf8);
 #else
@@ -35,12 +36,23 @@ const char* ToString(const std::string& s) {
   //lua_pushlstring(L, s.c_str(), s.length());
 }
 
+std::string EncryptByKey(const char* pubkey, const char* data) {
+  char depubkey[1024];
+  int  depubLen = 0;
+  RSAHelper::Base64decode(pubkey, depubkey, depubLen);
+
+  char pwd[128];
+  strncpy(pwd, data, sizeof(pwd)-1);
+  return RSAHelper::EncryptPassword(depubkey, depubLen, pwd);
+}
+
 // void 
 
 void Luabind_Base_Register(lua_State* L) {
   lua_tinker::def(L, "MD5String", &MD5String2);
   lua_tinker::def(L, "UTF8ToNativeMB", &UTF8ToNativeMB);
   lua_tinker::def(L, "ToString", &ToString);
+  lua_tinker::def(L, "EncryptByKey", &EncryptByKey);
 }
 
 }
