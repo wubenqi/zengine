@@ -55,14 +55,14 @@ SET (SERVER_LIST
 		./module/mod_db/register_helper/db_register_helper.cc
 		./module/mod_db/register_helper/db_register_helper.h
 
-		./module/mod_http_client/module_http_client_dll.cc
-		./module/mod_http_client/module_http_client_dll.h
-		./module/mod_http_client/module_http_client_plugin.cc
-		./module/mod_http_client/module_http_client_plugin.h
-		./module/mod_http_client/znet_http_client.cc
-		./module/mod_http_client/znet_http_client.h
-		./module/mod_http_client/register_helper/http_client_register_helper.cc
-		./module/mod_http_client/register_helper/http_client_register_helper.h
+#		./module/mod_http_client/module_http_client_dll.cc
+#		./module/mod_http_client/module_http_client_dll.h
+#		./module/mod_http_client/module_http_client_plugin.cc
+#		./module/mod_http_client/module_http_client_plugin.h
+#		./module/mod_http_client/znet_http_client.cc
+#		./module/mod_http_client/znet_http_client.h
+#		./module/mod_http_client/register_helper/http_client_register_helper.cc
+#		./module/mod_http_client/register_helper/http_client_register_helper.h
 
 		./module/mod_xml/module_xml_dll.cc
 		./module/mod_xml/module_xml_dll.h
@@ -78,5 +78,6 @@ ADD_EXECUTABLE(zengine ${SERVER_LIST}
 )
 
 ##update_end
-TARGET_LINK_LIBRARIES(zengine db3 script_engine net http_client base2 base url libevent mysqlclient lua curl2 pthread rt)
+#TARGET_LINK_LIBRARIES(zengine db3 script_engine net http_client base2 base url libevent mysqlclient lua curl2 pthread rt)
+TARGET_LINK_LIBRARIES(zengine db3 script_engine net base2 base libevent mysqlclient lua pthread rt)
 
